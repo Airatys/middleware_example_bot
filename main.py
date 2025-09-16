@@ -34,7 +34,12 @@ async def main() -> None:
     dp.include_router(user_router)
     dp.include_router(other_router)
 
-
+    dp.update.outer_middleware(FirstOuterMiddleware())
+    user_router.callback_query.outer_middleware(SecondOuterMiddleware())
+    other_router.message.outer_middleware(ThirdOuterMiddleware())
+    user_router.message.middleware(FirstInnerMiddleware())
+    user_router.callback_query.middleware(SecondInnerMiddleware())
+    other_router.message.middleware(ThirdInnerMiddleware())
 
     await dp.start_polling(bot)
 

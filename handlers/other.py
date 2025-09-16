@@ -1,7 +1,7 @@
 import logging
 from aiogram import Router
 from aiogram.types import Message
-from filters.filters import MyTrueFilter
+from filters.filters import MyTrueFilter, MyFalseFilter
 from lexicon.lexicon import LEXICON_RU
 
 
