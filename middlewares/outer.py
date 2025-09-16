@@ -1,10 +1,11 @@
 import logging
 from typing import Any, Awaitable, Callable
+
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 
-
 logger = logging.getLogger(__name__)
+
 
 class FirstOuterMiddleware(BaseMiddleware):
     async def __call__(

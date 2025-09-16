@@ -1,10 +1,11 @@
 import logging
 from typing import Any, Awaitable, Callable
+
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 
-
 logger = logging.getLogger(__name__)
+
 
 class FirstInnerMiddleware(BaseMiddleware):
     async def __call__(
@@ -24,7 +25,7 @@ class FirstInnerMiddleware(BaseMiddleware):
         logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
         return result
-   
+
 
 class SecondInnerMiddleware(BaseMiddleware):
     async def __call__(
@@ -39,11 +40,11 @@ class SecondInnerMiddleware(BaseMiddleware):
             event.__class__.__name__,
         )
 
-        # result = await handler(event, data)
+        result = await handler(event, data)
 
         logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
-        return
+        return result
 
 
 class ThirdInnerMiddleware(BaseMiddleware):
